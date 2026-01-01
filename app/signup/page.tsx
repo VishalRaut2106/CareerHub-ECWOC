@@ -147,7 +147,7 @@ export default function SignupPage() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full glassmorphic-button-primary text-foreground font-semibold"
+              className="w-full glassmorphic-button-primary text-primary-foreground font-semibold"
             >
               {isLoading ? "Creating Account..." : "Create Account"}
             </Button>
