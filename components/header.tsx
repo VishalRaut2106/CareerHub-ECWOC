@@ -25,19 +25,19 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 glassmorphic border-b shadow-md backdrop-blur-md">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-foreground/20 flex items-center justify-center font-bold text-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div className="w-8 h-8 rounded-lg bg-foreground/20 flex items-center justify-center font-bold text-lg shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300">
             C
           </div>
-          <span className="font-bold text-lg text-foreground hidden sm:inline tracking-wide group-hover:opacity-90 transition-opacity duration-300">
+          <span className="font-bold text-lg text-foreground hidden sm:inline tracking-wider group-hover:opacity-90 transition-opacity duration-300">
             CareerHub
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {[
             { name: "Browse", hash: "features" },
             { name: "Assessments", href: "/assessments" },
@@ -47,9 +47,7 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href || getHref(link.hash!)}
-              className={`relative text-muted-foreground hover:text-foreground transition-colors duration-300
-                ${pathname.includes(link.href || "") ? "font-semibold text-foreground underline underline-offset-4" : ""}
-                hover:bg-gradient-to-r hover:from-primary/20 hover:to-secondary/20 px-2 py-1 rounded-md`}
+              className={`relative text-muted-foreground hover:text-foreground transition-colors duration-300 px-2 py-1 rounded-md hover:bg-gradient-to-r hover:from-primary/20 hover:to-secondary/20 font-medium tracking-wide`}
             >
               {link.name}
             </Link>
@@ -65,7 +63,7 @@ export default function Header() {
             </Button>
           </Link>
           <Link href="/signup">
-            <Button className="glassmorphic-button-primary text-black shadow-lg hover:scale-105 transition-transform duration-300">
+            <Button className="glassmorphic-button-primary text-black shadow-lg hover:scale-105 hover:shadow-xl hover:ring-1 hover:ring-primary/50 transition-all duration-300">
               Sign Up
             </Button>
           </Link>
@@ -82,7 +80,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="absolute top-16 left-0 right-0 glassmorphic border-b p-4 md:hidden slide-up rounded-b-xl shadow-lg backdrop-blur-md">
+          <div className="absolute top-20 left-0 right-0 glassmorphic border-b p-4 md:hidden rounded-b-xl shadow-lg backdrop-blur-md slide-down-animation">
             <div className="flex flex-col gap-4">
               {[
                 { name: "Browse", hash: "features" },
@@ -93,7 +91,7 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href || getHref(link.hash!)}
-                  className="text-foreground hover:text-muted-foreground transition-colors duration-300 transform hover:translate-x-1"
+                  className="text-foreground hover:text-muted-foreground transition-colors duration-300 transform hover:translate-x-1 hover:shadow-sm px-2 py-1 rounded-md"
                   onClick={() => setIsOpen(false)} // close menu on click
                 >
                   {link.name}
@@ -107,7 +105,7 @@ export default function Header() {
                   </Button>
                 </Link>
                 <Link href="/signup" className="flex-1">
-                  <Button className="w-full glassmorphic-button-primary text-black shadow-lg hover:scale-105 transition-transform duration-300">
+                  <Button className="w-full glassmorphic-button-primary text-black shadow-lg hover:scale-105 hover:shadow-xl hover:ring-1 hover:ring-primary/50 transition-all duration-300">
                     Sign Up
                   </Button>
                 </Link>
