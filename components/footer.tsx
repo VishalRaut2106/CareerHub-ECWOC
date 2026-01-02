@@ -1,24 +1,38 @@
 "use client"
-
 import { Github, Twitter, Linkedin } from "lucide-react"
 
+// Footer component
 export default function Footer() {
   return (
+    // Main footer wrapper with background and top border
     <footer className="bg-card border-t border-border">
+
+      {/* Container to center content and control max width */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+        {/* Top section: grid layout for footer columns */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+
+          {/* Branding section */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
+              
+              {/* Logo box */}
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">C</span>
               </div>
+
+              {/* Brand name */}
               <span className="font-bold text-foreground">CareerHub</span>
             </div>
+
+            {/* Brand tagline */}
             <p className="text-sm text-muted-foreground">
               Empowering careers and securing futures, one opportunity at a time.
             </p>
           </div>
 
+          {/* Opportunities links */}
           <div>
             <h4 className="font-semibold text-foreground mb-4">Opportunities</h4>
             <ul className="space-y-2">
@@ -40,6 +54,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Resources links */}
           <div>
             <h4 className="font-semibold text-foreground mb-4">Resources</h4>
             <ul className="space-y-2">
@@ -61,6 +76,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Legal links */}
           <div>
             <h4 className="font-semibold text-foreground mb-4">Legal</h4>
             <ul className="space-y-2">
@@ -83,10 +99,15 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Bottom section: copyright and social links */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4">
+
+          {/* Copyright text */}
           <p className="text-sm text-muted-foreground text-center md:text-left">
             © 2025 CareerHub. All rights reserved.
           </p>
+
+          {/* Social media icons */}
           <div className="flex items-center gap-4">
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Twitter">
               <Twitter className="w-5 h-5" />
