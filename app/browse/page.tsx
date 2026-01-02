@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,31 +24,36 @@ interface Opportunity {
 const BrowsePage = () => {
   const [filter, setFilter] = useState<"all" | "job" | "internship" | "scholarship">("all");
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Get company posted jobs from localStorage
-  const companyPostedJobs: Opportunity[] = [];
-  const savedJobs = localStorage.getItem("postedJobs");
-  if (savedJobs) {
-    try {
-      const parsedJobs = JSON.parse(savedJobs);
-      const formattedJobs: Opportunity[] = parsedJobs.map((job: any) => ({
-        id: job.id,
-        title: job.title,
-        company: job.company,
-        type: job.type,
-        location: job.location,
-        salary: job.salary,
-        description: job.description,
-        tags: job.requirements || [],
-      }));
-      companyPostedJobs.push(...formattedJobs);
-    } catch (error) {
-      console.error("Error parsing company jobs:", error);
+  const [allOpportunities, setAllOpportunities] = useState<Opportunity[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    // Get company posted jobs from localStorage
+    const companyPostedJobs: Opportunity[] = [];
+    const savedJobs = localStorage.getItem("postedJobs");
+    if (savedJobs) {
+      try {
+        const parsedJobs = JSON.parse(savedJobs);
+        const formattedJobs: Opportunity[] = parsedJobs.map((job: any) => ({
+          id: job.id,
+          title: job.title,
+          company: job.company,
+          type: job.type,
+          location: job.location,
+          salary: job.salary,
+          description: job.description,
+          tags: job.requirements || [],
+        }));
+        companyPostedJobs.push(...formattedJobs);
+      } catch (error) {
+        console.error("Error parsing company jobs:", error);
+      }
     }
-  }
-
-  // Only use company posted jobs (no mock opportunities)
-  const allOpportunities = [...companyPostedJobs];
+    
+    // Only use company posted jobs (no mock opportunities)
+    setAllOpportunities(companyPostedJobs);
+    setIsLoading(false);
+  }, []);
 
   const filteredOpportunities = allOpportunities.filter(opp => {
     const matchesFilter = filter === "all" || opp.type === filter;
@@ -67,6 +72,21 @@ const BrowsePage = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-background">
+        <Header />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-foreground mb-4"></div>
+            <p className="text-foreground">Loading opportunities...</p>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+  
   return (
     <main className="min-h-screen bg-background">
       <Header />

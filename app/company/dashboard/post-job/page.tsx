@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,7 +46,7 @@ export default function PostJobPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
     const storedCompany = localStorage.getItem("companyUser");
     if (!storedCompany) {
       router.push("/company/login");
@@ -65,7 +65,7 @@ export default function PostJobPage() {
     } finally {
       setIsLoading(false);
     }
-  });
+  }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
