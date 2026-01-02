@@ -24,7 +24,7 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center slide-up">
           <Link href="/signup">
-            <Button size="lg" className="glassmorphic-button-primary text-foreground w-full sm:w-auto">
+            <Button size="lg" className="glassmorphic-button-primary w-full sm:w-auto">
               Start Your Search
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
