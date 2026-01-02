@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
@@ -50,7 +49,7 @@ export default function Hero() {
           <Link href="/signup">
             <Button
               size="lg"
-              className="group w-full sm:w-auto transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+              className="glassmorphic-button-primary w-full sm:w-auto group transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
             >
               Start Your Search
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -60,7 +59,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto bg-transparent flex items-center gap-2 hover:bg-foreground/5 transition-all"
+            className="w-full sm:w-auto glassmorphic flex items-center gap-2 hover:bg-foreground/5 transition-all"
           >
             <Play className="w-4 h-4" />
             Watch Tutorial

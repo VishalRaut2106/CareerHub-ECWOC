@@ -1,4 +1,4 @@
-// Importing social media icons from lucide-react
+"use client"
 import { Github, Twitter, Linkedin } from "lucide-react"
 
 // Footer component
